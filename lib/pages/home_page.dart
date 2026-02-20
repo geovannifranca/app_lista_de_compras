@@ -1,5 +1,7 @@
+import 'package:app_lista_de_compras/models/item.model.dart';
 import 'package:app_lista_de_compras/models/my_list.model.dart';
 import 'package:app_lista_de_compras/pages/list_create_page.dart';
+import 'package:app_lista_de_compras/widgets/list_card.widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,7 +12,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<MyList> _lists = [];
+  final List<MyList> _lists = [
+    MyList(
+      listName: 'Mercado',
+      items: [
+        Item(name: 'Maçã', value: 5.00, isCompleted: true),
+        Item(name: 'Leite', value: 10.00, isCompleted: true),
+      ],
+    ),
+    MyList(
+      listName: 'Livros',
+      items: [
+        Item(name: 'Narnia', value: 64.90, isCompleted: true),
+        Item(name: 'O hobbit', value: 74.00),
+        Item(name: 'O hobbit 2', value: 74.00, isCompleted: true),
+      ],
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +65,14 @@ class _HomePageState extends State<HomePage> {
             : ListView.separated(
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 8.0),
-                itemCount: 1,
+                itemCount: _lists.length,
                 itemBuilder: (context, index) {
                   MyList list = _lists[index];
-                  return ListTile(title: Text('Titulo ${list.listName}'));
+                  return ListCard(
+                    completeItems: '${list.completedItems}/${list.totalItems}',
+                    listName: list.listName,
+                    progress: list.progress,
+                  );
                 },
               ),
       ),

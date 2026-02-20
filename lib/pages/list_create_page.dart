@@ -1,5 +1,5 @@
-import 'package:app_lista_de_compras/widgets/button_primary.dart';
-import 'package:app_lista_de_compras/widgets/button_secundary.dart';
+import 'package:app_lista_de_compras/widgets/button_primary.widget.dart';
+import 'package:app_lista_de_compras/widgets/button_secundary.widget.dart';
 import 'package:flutter/material.dart';
 
 class ListCreatePage extends StatelessWidget {
