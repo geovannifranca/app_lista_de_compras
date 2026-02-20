@@ -1,4 +1,4 @@
-import 'package:app_lista_de_compras/models/item.model.dart';
+import 'package:app_lista_de_compras/controllers/list_controller.dart';
 import 'package:app_lista_de_compras/models/my_list.model.dart';
 import 'package:app_lista_de_compras/pages/list_create_page.dart';
 import 'package:app_lista_de_compras/widgets/list_card.widget.dart';
@@ -12,23 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<MyList> _lists = [
-    MyList(
-      listName: 'Mercado',
-      items: [
-        Item(name: 'Maçã', value: 5.00, isCompleted: true),
-        Item(name: 'Leite', value: 10.00, isCompleted: true),
-      ],
-    ),
-    MyList(
-      listName: 'Livros',
-      items: [
-        Item(name: 'Narnia', value: 64.90, isCompleted: true),
-        Item(name: 'O hobbit', value: 74.00),
-        Item(name: 'O hobbit 2', value: 74.00, isCompleted: true),
-      ],
-    ),
-  ];
+  final ListController _lists = ListController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +28,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SafeArea(
-        child: _lists.isEmpty
+        child: _lists.lists.isEmpty
             ? Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -62,16 +46,22 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               )
-            : ListView.separated(
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 8.0),
-                itemCount: _lists.length,
-                itemBuilder: (context, index) {
-                  MyList list = _lists[index];
-                  return ListCard(
-                    completeItems: '${list.completedItems}/${list.totalItems}',
-                    listName: list.listName,
-                    progress: list.progress,
+            : AnimatedBuilder(
+                animation: _lists,
+                builder: (context, child) {
+                  return ListView.separated(
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 8.0),
+                    itemCount: _lists.lists.length,
+                    itemBuilder: (context, index) {
+                      MyList list = _lists.lists[index];
+                      return ListCard(
+                        completeItems:
+                            '${list.completedItems}/${list.totalItems}',
+                        listName: list.listName,
+                        progress: list.progress,
+                      );
+                    },
                   );
                 },
               ),
@@ -85,7 +75,9 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ListCreatePage()),
+              MaterialPageRoute(
+                builder: (context) => ListCreatePage(lists: _lists),
+              ),
             );
           },
           child: const Icon(Icons.add),

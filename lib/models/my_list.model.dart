@@ -6,14 +6,14 @@ class MyList {
   final String _listName;
   final List<Item> _items;
 
-  MyList({required String listName, required List<Item> items})
+  MyList({required String listName, List<Item>? items})
     : _id = const Uuid().v4(),
       _listName = listName,
-      _items = items;
+      _items = items ?? [];
 
   String get id => _id;
+
   String get listName => _listName;
-  List<Item> get items => _items;
 
   int get totalItems => _items.length;
 
