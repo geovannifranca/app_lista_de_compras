@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           foregroundColor: Colors.white,
           shape: const CircleBorder(),
           onPressed: () {
-            Navigator.pushReplacement(
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ListCreatePage()),
             );
