@@ -1,5 +1,6 @@
 import 'package:app_lista_de_compras/controllers/list_controller.dart';
 import 'package:app_lista_de_compras/models/my_list.model.dart';
+import 'package:app_lista_de_compras/pages/items_page.dart';
 import 'package:app_lista_de_compras/pages/list_create_page.dart';
 import 'package:app_lista_de_compras/widgets/list_card.widget.dart';
 import 'package:flutter/material.dart';
@@ -48,18 +49,28 @@ class _HomePageState extends State<HomePage> {
               )
             : AnimatedBuilder(
                 animation: _lists,
-                builder: (context, child) {
+                builder: (_, child) {
                   return ListView.separated(
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 8.0),
+                    separatorBuilder: (_, index) => const SizedBox(height: 8.0),
                     itemCount: _lists.lists.length,
                     itemBuilder: (context, index) {
                       MyList list = _lists.lists[index];
-                      return ListCard(
-                        completeItems:
-                            '${list.completedItems}/${list.totalItems}',
-                        listName: list.listName,
-                        progress: list.progress,
+                      return GestureDetector(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ItemsPage(list: list),
+                            ),
+                          );
+                          setState(() {});
+                        },
+                        child: ListCard(
+                          completeItems:
+                              '${list.completedItems}/${list.totalItems}',
+                          listName: list.listName,
+                          progress: list.progress,
+                        ),
                       );
                     },
                   );

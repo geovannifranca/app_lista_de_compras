@@ -16,8 +16,28 @@ class MyList {
   String get listName => _listName;
 
   int get totalItems => _items.length;
+  List<Item> get items => _items;
 
   int get completedItems => _items.where((item) => item.isCompleted).length;
+  int get incompletedItems => _items.where((item) => !item.isCompleted).length;
+
+  double get valuecompletedItems {
+    var listCompleted = _items.where((item) => item.isCompleted);
+    double total = 0;
+    for (var item in listCompleted) {
+      total = total + item.value;
+    }
+    return total;
+  }
+
+  double get valueIncompletedItems {
+    var listCompleted = _items.where((item) => !item.isCompleted);
+    double total = 0;
+    for (var item in listCompleted) {
+      total = total + item.value;
+    }
+    return total;
+  }
 
   double get progress {
     if (totalItems == 0) return 0.0;
