@@ -16,8 +16,8 @@ Este é um aplicativo móvel desenvolvido em Flutter para gerenciar listas de co
 
 - **Flutter:** Framework de UI para a construção de aplicativos móveis, web e desktop a partir de um único código-fonte.
 - **Dart:** Linguagem de programação otimizada para UI, utilizada pelo Flutter.
-- **Provider (Gerenciamento de Estado):** Utilizado para gerenciar o estado da aplicação de forma reativa e eficiente.
-- **uuid:** Pacote para geração de identificadores únicos universais (UUIDs).
+- **ChangeNotifier/setState (Gerenciamento de Estado):** Utilizado para gerenciar o estado da aplicação de forma reativa e eficiente.
+
 
 ## Estrutura do Projeto
 
