@@ -7,6 +7,7 @@ class ListCreatePage extends StatelessWidget {
   ListCreatePage({super.key, required this.lists});
   final ListController lists;
   final TextEditingController listName = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +17,19 @@ class ListCreatePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Form(
+            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Spacer(flex: 4),
                 TextFormField(
                   controller: listName,
-                  validator: (value) => '',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Campo obrigatório';
+                    }
+                    return null;
+                  },
                   decoration: const InputDecoration(
                     hintText: 'Nome da lista',
                     filled: true,
@@ -43,9 +50,11 @@ class ListCreatePage extends StatelessWidget {
                     Expanded(
                       child: ButtonPrimary(
                         onTap: () {
-                          lists.listCreate(listName: listName.text);
-                          listName.text = '';
-                          Navigator.of(context).pop();
+                          if (_formKey.currentState!.validate()) {
+                            lists.listCreate(listName: listName.text);
+                            listName.clear();
+                            Navigator.of(context).pop();
+                          }
                         },
                         text: 'Criar',
                       ),

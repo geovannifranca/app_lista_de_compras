@@ -124,7 +124,7 @@ class _ItemsPageState extends State<ItemsPage> {
                       children: [
                         const Text('Não Marcados'),
                         Text(
-                          'R\$ ${widget.list.valueIncompletedItems}',
+                          'R\$ ${widget.list.valueIncompletedItems.toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontSize: 18.0,
                             color: Colors.blueAccent,
