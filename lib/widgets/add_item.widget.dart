@@ -16,6 +16,8 @@ class _AddItemState extends State<AddItem> {
 
   final TextEditingController value = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void dispose() {
     name.dispose();
@@ -32,71 +34,88 @@ class _AddItemState extends State<AddItem> {
         right: 20,
         bottom: MediaQuery.of(context).viewInsets.bottom + 20,
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Adicionar Item',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.bold,
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Adicionar Item',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 26.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.close, size: 30),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-          const Divider(thickness: 2),
-          const SizedBox(height: 16.0),
-          TextFormField(
-            key: const Key("inputItem"),
-            controller: name,
-            decoration: const InputDecoration(
-              hintText: 'Nome do Item',
-              border: InputBorder.none,
+                IconButton(
+                  icon: const Icon(Icons.close, size: 30),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
             ),
-          ),
-          TextFormField(
-            key: const Key("inputValue"),
-            controller: value,
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            decoration: const InputDecoration(
-              hintText: 'R\$ 0,00',
-              border: InputBorder.none,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                key: const Key("addItemBtn"),
-                onPressed: () {
-                  if (name.text.trim().isNotEmpty) {
-                    String valorTratado = value.text.replaceAll(',', '.');
-                    widget.items.addItem(
-                      item: Item(
-                        name: name.text,
-                        value: double.tryParse(valorTratado) ?? 0.0,
-                      ),
-                    );
-                  }
-                  name.clear();
-                  value.clear();
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Adicionar'),
+            const Divider(thickness: 2),
+            const SizedBox(height: 16.0),
+            TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Campo obrigatório';
+                }
+                return null;
+              },
+              key: const Key("inputItem"),
+              controller: name,
+              decoration: const InputDecoration(
+                hintText: 'Nome do Item',
+                border: InputBorder.none,
               ),
-            ],
-          ),
-        ],
+            ),
+            TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Campo obrigatório';
+                }
+                return null;
+              },
+              key: const Key("inputValue"),
+              controller: value,
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
+              decoration: const InputDecoration(
+                hintText: 'R\$ 0,00',
+                border: InputBorder.none,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  key: const Key("addItemBtn"),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      String valorTratado = value.text.replaceAll(',', '.');
+                      widget.items.addItem(
+                        item: Item(
+                          name: name.text,
+                          value: double.tryParse(valorTratado) ?? 0.0,
+                        ),
+                      );
+                    }
+                    name.clear();
+                    value.clear();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Adicionar'),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
