@@ -57,6 +57,7 @@ class _AddItemState extends State<AddItem> {
           const Divider(thickness: 2),
           const SizedBox(height: 16.0),
           TextFormField(
+            key: const Key("inputItem"),
             controller: name,
             decoration: const InputDecoration(
               hintText: 'Nome do Item',
@@ -64,6 +65,7 @@ class _AddItemState extends State<AddItem> {
             ),
           ),
           TextFormField(
+            key: const Key("inputValue"),
             controller: value,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             decoration: const InputDecoration(
@@ -75,6 +77,7 @@ class _AddItemState extends State<AddItem> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
+                key: const Key("addItemBtn"),
                 onPressed: () {
                   if (name.text.trim().isNotEmpty) {
                     String valorTratado = value.text.replaceAll(',', '.');

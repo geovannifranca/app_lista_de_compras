@@ -23,6 +23,7 @@ class ListCreatePage extends StatelessWidget {
               children: [
                 const Spacer(flex: 4),
                 TextFormField(
+                  key: const Key("listNameInput"),
                   controller: listName,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -42,13 +43,15 @@ class ListCreatePage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ButtonSecundary(
+                        key: const Key("backToListsBtn"),
                         onTap: () => Navigator.of(context).pop(),
-                        text: 'Cancelar',
+                        text: 'Voltar',
                       ),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
                       child: ButtonPrimary(
+                        key: const Key("createListBtn"),
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             lists.listCreate(listName: listName.text);

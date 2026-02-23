@@ -20,7 +20,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Minhas Listas', style: TextStyle(fontSize: 24.0)),
+        title: const Text(
+          key: Key("appBarTitle"),
+          'Minhas Listas',
+          style: TextStyle(fontSize: 24.0),
+        ),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 12.0),
@@ -35,6 +39,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
+                      key: const Key("emptyListImage"),
                       'assets/images/lista-de-compras.png',
                       width: 120,
                     ),
@@ -55,21 +60,36 @@ class _HomePageState extends State<HomePage> {
                     itemCount: _lists.lists.length,
                     itemBuilder: (context, index) {
                       MyList list = _lists.lists[index];
-                      return GestureDetector(
-                        onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ItemsPage(list: list),
-                            ),
-                          );
+                      return Dismissible(
+                        key: Key(list.id),
+                        direction: DismissDirection.startToEnd,
+                        background: Container(
+                          color: Colors.red,
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: const Icon(Icons.delete, color: Colors.white),
+                        ),
+                        onDismissed: (direction) {
+                          _lists.removeItem(index);
                           setState(() {});
                         },
-                        child: ListCard(
-                          completeItems:
-                              '${list.completedItems}/${list.totalItems}',
-                          listName: list.listName,
-                          progress: list.progress,
+                        child: GestureDetector(
+                          key: const Key("shoppingListCard"),
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemsPage(list: list),
+                              ),
+                            );
+                            setState(() {});
+                          },
+                          child: ListCard(
+                            completeItems:
+                                '${list.completedItems}/${list.totalItems}',
+                            listName: list.listName,
+                            progress: list.progress,
+                          ),
                         ),
                       );
                     },
@@ -80,16 +100,18 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
         child: FloatingActionButton(
+          key: const Key("addListBtn"),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           shape: const CircleBorder(),
-          onPressed: () {
-            Navigator.push(
+          onPressed: () async {
+            await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => ListCreatePage(lists: _lists),
               ),
             );
+            setState(() {});
           },
           child: const Icon(Icons.add),
         ),

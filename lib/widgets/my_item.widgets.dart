@@ -19,6 +19,7 @@ class MyItem extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: GestureDetector(
+        key: const Key("productCheckbox"),
         onTap: onTap,
         child: Container(
           width: 34,
@@ -39,15 +40,10 @@ class MyItem extends StatelessWidget {
               nome,
               style: const TextStyle(color: Colors.black26, fontSize: 20.0),
             ),
-      trailing: !isSelected
-          ? Text(
-              'R\$ ${value.toStringAsFixed(2)}',
-              style: const TextStyle(fontSize: 20.0),
-            )
-          : Text(
-              'R\$ ${value.toStringAsFixed(2)}',
-              style: const TextStyle(color: Colors.black26, fontSize: 20.0),
-            ),
+      trailing: Text(
+        'R\$ ${value.toStringAsFixed(2)}',
+        style: const TextStyle(fontSize: 20.0),
+      ),
     );
   }
 }

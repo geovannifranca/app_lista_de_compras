@@ -39,6 +39,7 @@ class _ItemsPageState extends State<ItemsPage> {
       appBar: AppBar(
         actions: [
           TextButton(
+            key: const Key("updateListBtn"),
             onPressed: () => setState(() {}),
             child: const Text(
               'Atualizar',
@@ -156,6 +157,7 @@ class _ItemsPageState extends State<ItemsPage> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
         child: FloatingActionButton.extended(
+          key: const Key("addNewItemBtn"),
           extendedPadding: const EdgeInsets.symmetric(horizontal: 28.0),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
