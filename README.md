@@ -90,4 +90,4 @@ Aqui estão algumas telas do aplicativo em funcionamento:
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes. (Assumindo licença MIT, caso não exista um arquivo LICENSE no repositório, será necessário criar um ou ajustar esta seção.)
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
