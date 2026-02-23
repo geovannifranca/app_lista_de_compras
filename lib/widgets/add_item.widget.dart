@@ -110,7 +110,10 @@ class _AddItemState extends State<AddItem> {
                       Navigator.of(context).pop();
                     }
                   },
-                  child: const Text('Adicionar'),
+                  child: const Text(
+                    'Adicionar',
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
               ],
             ),
