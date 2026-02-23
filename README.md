@@ -23,6 +23,7 @@ Este é um aplicativo móvel desenvolvido em Flutter para gerenciar listas de co
 
 O projeto segue uma estrutura modular, organizada da seguinte forma:
 
+'''
 lib/
 ├── controllers/        # Lógica de negócio e gerenciamento de estado
 │   ├── item_controller.dart
@@ -42,6 +43,7 @@ lib/
 │   └── my_item.widgets.dart
 ├── main.dart           # Ponto de entrada da aplicação
 └── my_app.dart         # Configuração da aplicação Flutter
+'''
 
 ## Como Rodar o Projeto
 
