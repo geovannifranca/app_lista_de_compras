@@ -105,10 +105,10 @@ class _AddItemState extends State<AddItem> {
                           value: double.tryParse(valorTratado) ?? 0.0,
                         ),
                       );
+                      name.clear();
+                      value.clear();
+                      Navigator.of(context).pop();
                     }
-                    name.clear();
-                    value.clear();
-                    Navigator.of(context).pop();
                   },
                   child: const Text('Adicionar'),
                 ),
