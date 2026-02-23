@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-Este é um aplicativo móvel desenvolvido em Flutter para gerenciar listas de compras de forma eficiente e intuitiva. Ele permite aos usuários criar múltiplas listas, adicionar itens com seus respectivos valores, marcar itens como comprados e visualizar o progresso e os totais de cada lista.
+Este é o segundo desafio da metoria da GrowDev, um aplicativo móvel desenvolvido em Flutter para gerenciar listas de compras de forma eficiente e intuitiva. Ele permite aos usuários criar múltiplas listas, adicionar itens com seus respectivos valores, marcar itens como comprados e visualizar o progresso e os totais de cada lista.
 
 ## Funcionalidades
 
@@ -87,7 +87,6 @@ Aqui estão algumas telas do aplicativo em funcionamento:
 <img width="235,8" height="511,2" alt="pagina-8" src="https://github.com/user-attachments/assets/97fff453-04f4-4e59-a124-132e57165d36" />
 <img width="235,8" height="511,2" alt="pagina-9" src="https://github.com/user-attachments/assets/832d9e90-d502-4971-8910-68f0535e4c0e" />
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
 
 ## Licença
 
