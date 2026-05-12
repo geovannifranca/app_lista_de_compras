@@ -1,4 +1,5 @@
 import 'package:app_lista_de_compras/controllers/list_controller.dart';
+import 'package:app_lista_de_compras/theme/app_color_scheme.dart';
 import 'package:app_lista_de_compras/widgets/button_primary.widget.dart';
 import 'package:app_lista_de_compras/widgets/button_secundary.widget.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,9 @@ class ListCreatePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).extension<AppColorSchema>()!;
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: colors.primaryColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -31,10 +33,10 @@ class ListCreatePage extends StatelessWidget {
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Nome da lista',
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: colors.textColor,
                   ),
                 ),
                 const Spacer(flex: 4),
