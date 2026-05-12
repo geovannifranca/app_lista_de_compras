@@ -1,4 +1,5 @@
 import 'package:app_lista_de_compras/pages/home_page.dart';
+import 'package:app_lista_de_compras/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,14 +9,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Lista de Compras',
-      theme: ThemeData(
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF4CAF50),
-          foregroundColor: Colors.white,
-        ),
-      ),
-
+      themeMode: ThemeMode.light,
+      theme: lightTheme(),
       home: const HomePage(),
     );
   }

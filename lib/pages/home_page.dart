@@ -101,8 +101,6 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.only(bottom: 20.0),
         child: FloatingActionButton(
           key: const Key("addListBtn"),
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
           shape: const CircleBorder(),
           onPressed: () async {
             await Navigator.push(
