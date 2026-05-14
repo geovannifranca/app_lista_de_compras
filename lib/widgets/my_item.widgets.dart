@@ -19,7 +19,7 @@ class MyItem extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: GestureDetector(
-        key: const Key("productCheckbox"),
+        key: const Key("checkboxBuy"),
         onTap: onTap,
         child: Container(
           width: 34,

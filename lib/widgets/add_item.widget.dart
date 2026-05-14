@@ -71,7 +71,7 @@ class _AddItemState extends State<AddItem> {
                 }
                 return null;
               },
-              key: const Key("inputItem"),
+              key: const Key("inputNameItem"),
               controller: name,
               decoration: const InputDecoration(
                 hintText: 'Nome do Item',
@@ -85,7 +85,7 @@ class _AddItemState extends State<AddItem> {
                 }
                 return null;
               },
-              key: const Key("inputValue"),
+              key: const Key("intputPriceItem"),
               controller: value,
               keyboardType: const TextInputType.numberWithOptions(
                 decimal: true,
@@ -99,7 +99,7 @@ class _AddItemState extends State<AddItem> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  key: const Key("addItemBtn"),
+                  key: const Key("btnAddItem"),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       String valorTratado = value.text.replaceAll(',', '.');

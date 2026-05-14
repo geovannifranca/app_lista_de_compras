@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          key: Key("appBarTitle"),
+          key: Key("tittleAppBar"),
           'Minhas Listas',
           style: TextStyle(fontSize: 24.0),
         ),
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      key: const Key("emptyListImage"),
+                      key: const Key("imageWithoutList"),
                       'assets/images/lista-de-compras.png',
                       width: 120,
                     ),
@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
                             setState(() {});
                           },
                           child: ListCard(
+                            key: const Key("cardList"),
                             completeItems:
                                 '${list.completedItems}/${list.totalItems}',
                             listName: list.listName,
@@ -110,7 +111,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
         child: FloatingActionButton(
-          key: const Key("addListBtn"),
+          key: const Key("btnAddList"),
           shape: const CircleBorder(),
           onPressed: () async {
             await Navigator.push(
