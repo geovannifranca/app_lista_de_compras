@@ -14,7 +14,9 @@ class ListCreatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<AppColorSchema>()!;
     return Scaffold(
-      backgroundColor: colors.primaryColor,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? colors.backgroundColor
+          : colors.primaryColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -35,6 +37,11 @@ class ListCreatePage extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                     hintText: 'Nome da lista',
+                    hintStyle: TextStyle(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? colors.backgroundColor
+                          : null,
+                    ),
                     filled: true,
                     fillColor: colors.textColor,
                   ),

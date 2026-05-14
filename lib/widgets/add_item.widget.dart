@@ -1,5 +1,6 @@
 import 'package:app_lista_de_compras/controllers/item_controller.dart';
 import 'package:app_lista_de_compras/models/item.model.dart';
+import 'package:app_lista_de_compras/theme/app_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class AddItem extends StatefulWidget {
@@ -27,6 +28,7 @@ class _AddItemState extends State<AddItem> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).extension<AppColorSchema>()!;
     return Padding(
       padding: EdgeInsets.only(
         top: 20,
@@ -42,10 +44,12 @@ class _AddItemState extends State<AddItem> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Adicionar Item',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? colors.textColor
+                        : null,
                     fontSize: 26.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -110,9 +114,9 @@ class _AddItemState extends State<AddItem> {
                       Navigator.of(context).pop();
                     }
                   },
-                  child: const Text(
+                  child: Text(
                     'Adicionar',
-                    style: TextStyle(color: Colors.blue),
+                    style: TextStyle(color: colors.primaryColor),
                   ),
                 ),
               ],

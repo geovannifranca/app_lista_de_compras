@@ -5,20 +5,20 @@ class AppColorSchemaThemes {
   AppColorSchemaThemes._();
 
   static const light = AppColorSchema(
-    primaryColor: AppColors.green,
-    appBarColor: AppColors.green,
+    primaryColor: AppColors.green100,
+    appBarColor: AppColors.green100,
     backgroundColor: AppColors.white,
     cardColor: AppColors.white,
-    fabColor: AppColors.green,
+    fabColor: AppColors.green100,
     textColor: AppColors.white,
   );
 
   static const dark = AppColorSchema(
-    primaryColor: AppColors.green,
+    primaryColor: AppColors.green100,
     appBarColor: AppColors.black,
-    backgroundColor: AppColors.green,
-    cardColor: AppColors.green,
-    fabColor: AppColors.green,
+    backgroundColor: AppColors.black,
+    cardColor: AppColors.green50,
+    fabColor: AppColors.green100,
     textColor: AppColors.white,
   );
 }

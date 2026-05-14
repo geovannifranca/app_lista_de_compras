@@ -3,6 +3,7 @@ import 'package:app_lista_de_compras/models/my_list.model.dart';
 import 'package:app_lista_de_compras/pages/items_page.dart';
 import 'package:app_lista_de_compras/pages/list_create_page.dart';
 import 'package:app_lista_de_compras/widgets/list_card.widget.dart';
+import 'package:app_lista_de_compras/widgets/preferences.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,10 +26,19 @@ class _HomePageState extends State<HomePage> {
           'Minhas Listas',
           style: TextStyle(fontSize: 24.0),
         ),
-        actions: const [
+        actions: [
+          const Icon(Icons.diamond, color: Color(0xFFFFC107), size: 30.0),
           Padding(
-            padding: EdgeInsets.only(right: 12.0),
-            child: Icon(Icons.diamond, color: Colors.amber, size: 30.0),
+            padding: const EdgeInsets.only(right: 12.0),
+            child: IconButton(
+              icon: const Icon(Icons.settings, size: 30.0),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Preferences()),
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -45,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 46),
                     const Text(
-                      'Crie sua primeira lista\nToque no botão azul',
+                      'Crie sua primeira lista\nToque no botão verde',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20.0),
                     ),

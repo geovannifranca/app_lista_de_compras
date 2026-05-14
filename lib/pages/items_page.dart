@@ -1,5 +1,6 @@
 import 'package:app_lista_de_compras/controllers/item_controller.dart';
 import 'package:app_lista_de_compras/models/item.model.dart';
+import 'package:app_lista_de_compras/theme/app_color_scheme.dart';
 import 'package:app_lista_de_compras/widgets/add_item.widget.dart';
 import 'package:app_lista_de_compras/widgets/my_item.widgets.dart';
 import 'package:app_lista_de_compras/models/my_list.model.dart';
@@ -35,6 +36,8 @@ class _ItemsPageState extends State<ItemsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).extension<AppColorSchema>()!;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -159,7 +162,7 @@ class _ItemsPageState extends State<ItemsPage> {
         child: FloatingActionButton.extended(
           key: const Key("addNewItemBtn"),
           extendedPadding: const EdgeInsets.symmetric(horizontal: 28.0),
-          backgroundColor: Colors.blue,
+          backgroundColor: colors.primaryColor,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(28),
